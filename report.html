@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web Development Mid-Term Project - Preetamjeet Pradhan</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 16mm 12mm 16mm;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1f2937;
+      background: #ffffff;
+      font-size: 8.8pt;
+      line-height: 1.42;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      position: relative;
+      height: 271mm;
+      max-height: 271mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      overflow: hidden;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    /* Top Accent Line */
+    .top-accent {
+      width: 48px;
+      height: 3.5px;
+      background: #e11d48;
+      margin-bottom: 12px;
+    }
+
+    /* Header */
+    .project-header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 17.5pt;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #111827;
+      margin-bottom: 3px;
+    }
+
+    .project-student {
+      font-size: 9.8pt;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    /* Meta Table */
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      border: 1px solid #d1d5db;
+      font-size: 8.5pt;
+    }
+
+    .meta-table td {
+      padding: 5px 10px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .meta-table td.label {
+      width: 24%;
+      font-weight: 700;
+      color: #111827;
+      background: #fdfdfd;
+    }
+
+    .meta-table td.link a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    /* Section Headings */
+    h2.section-heading {
+      font-size: 9.2pt;
+      font-weight: 800;
+      color: #111827;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    p.body-text {
+      font-size: 8.4pt;
+      color: #374151;
+      line-height: 1.38;
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    /* Data Tables */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+      margin-bottom: 8px;
+      font-size: 8.1pt;
+    }
+
+    .data-table th {
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 700;
+      text-align: left;
+      padding: 5.5px 8px;
+      font-size: 8.1pt;
+      border: 1px solid #0f172a;
+    }
+
+    .data-table td {
+      padding: 5px 8px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+      line-height: 1.32;
+    }
+
+    .data-table td.col-key {
+      font-weight: 700;
+      color: #0f172a;
+      width: 18%;
+      white-space: nowrap;
+      background: #f8fafc;
+    }
+
+    .data-table tr:nth-child(even) td:not(.col-key) {
+      background: #fafafa;
+    }
+
+    .visual-direction {
+      font-size: 8pt;
+      line-height: 1.35;
+      color: #374151;
+      margin-top: 5px;
+      margin-bottom: 9px;
+    }
+
+    .visual-direction strong {
+      color: #111827;
+    }
+
+    /* Bullet Lists */
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 4px 0;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 8.2pt;
+      line-height: 1.34;
+      color: #374151;
+      margin-bottom: 5px;
+      text-align: justify;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: #111827;
+      font-weight: bold;
+    }
+
+    .bullet-list li strong {
+      color: #111827;
+    }
+
+    /* Project Links Box */
+    .links-box {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      padding: 7px 12px;
+      margin-top: 8px;
+      border-radius: 3px;
+    }
+
+    .links-box-title {
+      font-size: 7.8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .links-box-content {
+      font-size: 8.2pt;
+      color: #2563eb;
+    }
+
+    .links-box-content a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .links-box-content span {
+      color: #94a3b8;
+      margin: 0 8px;
+    }
+
+    /* Running Footer */
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 6px;
+      font-size: 7.2pt;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="page">
+    <div class="content">
+      <div class="top-accent"></div>
+
+      <header class="project-header">
+        <h1 class="project-title">WEB DEVELOPMENT MID-TERM PROJECT</h1>
+        <p class="project-student">Preetamjeet Pradhan &nbsp;|&nbsp; Roll No. 26120969</p>
+      </header>
+
+      <table class="meta-table">
+        <tr>
+          <td class="label">Live Website</td>
+          <td class="link"><a href="https://preetampradhan.github.io/resume/">https://preetampradhan.github.io/resume/</a></td>
+        </tr>
+        <tr>
+          <td class="label">GitHub Repository</td>
+          <td class="link"><a href="https://github.com/preetampradhan/resume">https://github.com/preetampradhan/resume</a></td>
+        </tr>
+      </table>
+
+      <h2 class="section-heading">1. ABOUT THE WEBSITE</h2>
+      <p class="body-text">
+        This project is a personal resume and portfolio website presenting Preetamjeet Pradhan as a high-achieving undergraduate dual-degree student at NMIMS (B.Com Honours) and IIM Bangalore (BBA-Digital Business and Entrepreneurship, BBA-DB&amp;E) seeking an internship in analysis and management. Built on a clean semantic HTML foundation styled with a sophisticated CSS design system, the site structures academic credentials, school leadership at SAI International School, competitive debate accomplishments, and key practical capabilities into an engaging, single-page scrollable experience optimized for recruiter review.
+      </p>
+
+      <h2 class="section-heading">2. SECTIONS AND DESIGN DECISIONS</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 19%;">Section</th>
+            <th>Purpose and design reasoning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-key">Home</td>
+            <td>Introduces Preetamjeet with a profile statement, dynamic animated "Open to internships" status pill, Roll No tag, quick action buttons (Email, LinkedIn, GitHub, and Print Resume), and a 3-column stats row (95.8% in Class 12, School Pupil Leader, and two degrees).</td>
+          </tr>
+          <tr>
+            <td class="col-key">Experience</td>
+            <td>Presents a vertical timeline with connecting tracks and node bullets detailing student governance as School Pupil Leader at SAI International School (managing 1,400+ students) and two-year championship victories in debate and indoor competitions.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Education</td>
+            <td>Summarizes higher education at IIM Bangalore and NMIMS alongside senior secondary schooling at SAI International School, Bhubaneswar (CBSE, 95.8%) using clean card layouts and date status pills.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Skills</td>
+            <td>Organizes core practical competencies (Team Leadership, Event Coordination, Public Speaking &amp; Debate, Mentoring) in a 2&times;2 CSS Grid with top accent borders and numeric tags.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Resume</td>
+            <td>Features a paper-style resume sheet with realistic drop-shadows, direct Print/PDF trigger, and comprehensive black-and-white print styles for 1-page A4 output.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Contact</td>
+            <td>Provides clear recruiter touchpoints via large prominent email link, LinkedIn profile, GitHub repository links, and smooth back-to-top navigation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="visual-direction">
+        <strong>Visual direction:</strong> The interface adopts a professional navy, royal blue and white palette (#0e1a36, #2457f5, #9db8ff, #ffffff). Google Fonts pairing with <em>Fraunces</em> (serif) for authoritative headings and <em>Figtree</em> (sans-serif) for body text creates visual hierarchy, while glassmorphism navigation, full-width colored bands, and subtle hover lifts keep the presentation clean and recruiter-focused.
+      </p>
+
+      <h2 class="section-heading">3. IMPROVEMENTS AND INTERACTIVE ELEMENTS</h2>
+      <ul class="bullet-list">
+        <li><strong>Sticky navigation &amp; glassmorphism:</strong> A persistent navigation header with backdrop blur provides effortless in-page jumping across desktop and mobile devices.</li>
+        <li><strong>Scroll progress indicator:</strong> A scroll-driven blue progress bar (using <code>animation-timeline: scroll()</code>) fills across the navbar as the reader moves down the page.</li>
+        <li><strong>Hero stat grid &amp; status pill:</strong> A 3-column CSS Grid highlights key metrics (95.8%, Leadership, Dual Degrees) paired with a pulsating green radar dot indicating availability.</li>
+        <li><strong>Dedicated printable A4 sheet:</strong> Integrated <code>@media print</code> stylesheet isolates the resume on a clean single A4 page, automatically suppressing background colors, navbar, and footers.</li>
+        <li><strong>Zero-dependency performance:</strong> Engineered using pure semantic HTML5 and vanilla CSS3 without heavy frameworks, guaranteeing sub-second load times and flawless GitHub Pages hosting.</li>
+      </ul>
+    </div>
+
+    <footer class="page-footer">
+      <span>WEB DEVELOPMENT MID-TERM PROJECT | PREETAMJEET PRADHAN</span>
+      <span>1</span>
+    </footer>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="content">
+      <div class="top-accent"></div>
+
+      <h2 class="section-heading" style="margin-top: 0;">4. TECHNICAL STRUCTURE</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 20%;">Area</th>
+            <th>Implementation visible in the project repository</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-key">Frontend</td>
+            <td>Semantic HTML5 markup with structured hierarchy (&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;), paired with Google Fonts (Fraunces and Figtree).</td>
+          </tr>
+          <tr>
+            <td class="col-key">Build tooling</td>
+            <td>Pure HTML5/CSS3 architecture without framework bloat, build steps, or external dependencies, ensuring instantaneous browser parsing and GitHub Pages compatibility.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Styling</td>
+            <td>Modular CSS custom properties (:root variables) governing colors, typography, border radii, transitions, and layered shadow tokens.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Interaction</td>
+            <td>CSS sticky positioning, modern CSS scroll-driven progress animation, smooth scroll behavior, card hover lifts, and radar pulse keyframe animations.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Layout system</td>
+            <td>CSS Flexbox for navigation, button clusters, and header meta; CSS Grid for multi-column statistics and skills cards; clamp() for fluid typography.</td>
+          </tr>
+          <tr>
+            <td class="col-key">Deployment</td>
+            <td>Hosted publicly via GitHub Pages continuous deployment directly from the main branch of the GitHub repository.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="section-heading">5. COURSE CONCEPTS APPLIED</h2>
+      <ul class="bullet-list">
+        <li><strong>Semantic HTML structure:</strong> Clean document outline with proper headings, metadata tags, accessible labels (<code>aria-label</code>), and logical sectioning without unnecessary wrapper bloat.</li>
+        <li><strong>Advanced CSS selectors &amp; counters:</strong> Uses element, class, and ID selectors, pseudo-classes (<code>:hover</code>, <code>:focus-visible</code>), pseudo-elements (<code>::before</code>, <code>::after</code>), and automated CSS counters (<code>counter(sec, decimal-leading-zero)</code>) to dynamically generate numbered section markers (01–04).</li>
+        <li><strong>Full-width color bands:</strong> Leverages the <code>box-shadow</code> and <code>clip-path: inset(0 -100vmax)</code> technique to stretch background bands edge-to-edge while keeping page content centered inside a max-width container.</li>
+        <li><strong>5-tier responsive layout:</strong> Custom media queries tailored for extra-large monitors (1600px), desktops (1100px), tablets (860px), mobile phones (700px), small screens (380px), and landscape orientation with horizontal scroll navigation.</li>
+        <li><strong>Accessibility &amp; touch optimization:</strong> High contrast color ratios exceeding WCAG AA standards, visible keyboard focus indicators, touch targets meeting the 44px minimum height requirement, and <code>prefers-reduced-motion</code> compliance.</li>
+      </ul>
+
+      <h2 class="section-heading">6. DESIGN ASSISTANCE AND TOOL DISCLOSURE</h2>
+      <p class="body-text">
+        Selected visual architecture, color harmonies, and responsive CSS techniques were explored and refined with assistance from tools such as <strong>Google AI Studio</strong> and <strong>Antigravity</strong>. These tools supported parts of the ideation, stylesheet structuring, and GitHub Pages deployment workflow; the resulting implementation was reviewed, tested, and incorporated into the student submission project.
+      </p>
+
+      <h2 class="section-heading">7. PROJECT REFLECTION</h2>
+      <p class="body-text">
+        Building this portfolio website synthesized essential front-end development principles: converting structured personal and academic data into a modern, responsive digital presentation. The project demonstrates how advanced CSS techniques—including CSS Grid, Flexbox, custom variables, scroll-driven timelines, and print stylesheets—can yield a polished, recruiter-grade web experience while preserving clean, semantic markup and lightweight performance.
+      </p>
+
+      <div class="links-box">
+        <div class="links-box-title">Project Links</div>
+        <div class="links-box-content">
+          <a href="https://preetampradhan.github.io/resume/">Live Portfolio</a>
+          <span>|</span>
+          <a href="https://github.com/preetampradhan/resume">Source Repository</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      <span>WEB DEVELOPMENT MID-TERM PROJECT | PREETAMJEET PRADHAN</span>
+      <span>2</span>
+    </footer>
+  </div>
+
+</body>
+</html>
